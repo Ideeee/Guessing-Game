@@ -30,7 +30,7 @@ function game(range) {
     } 
     else{
       attemptsLeft -= 1;
-      if(!attemptsLeft) return console.log(`Sorry, you lose. Your score is ${points}`);
+      if(!attemptsLeft) console.log(`Sorry, you lose. Your score is ${points}`);
     }
   }
 }
