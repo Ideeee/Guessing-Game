@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')();
 
 const intro = () =>{
-    const userName = prompt('Enter a username:');
+    const userName = prompt('Enter a username: ');
 
     console.log(`Hello ${userName}, welcome to our guessing game.
 For starters, Try to guess a number between 1 and 2.`);
