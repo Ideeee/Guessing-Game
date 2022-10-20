@@ -3,34 +3,36 @@ const prompt = require('prompt-sync')();
 const intro = () =>{
     const userName = prompt('Enter a username: ');
 
-    console.log(`Hello ${userName}, welcome to our guessing game.
-For starters, Try to guess a number between 1 and 2.`);
+    console.log(`Hello ${userName}, Welcome to our guessing game.
+For starters, Try to guess a number between 1 and 2.
+You have 3 tries`);
 }
 
 let points = 0;
 
 function game(range) {
-    if(range > 5){
-        return console.log( `You won! Your score is ${points} points`)
-    }
+  if(range > 10){
+    return console.log( `You won! Your score is ${points} points`)
+  }
 
-    let correctNumber = Math.floor(Math.random() * range) + 1;
+  let attemptsLeft = 3;
+  let correctNumber = Math.floor(Math.random() * range) + 1;
 
+  while(attemptsLeft){
     const guess = prompt(`Guess a number between 1 and ${range}: `);
 
     if(guess == correctNumber){
-        points += 1;
-        console.log (`Correct! your score is ${points} `);
+      points += 1;
+      console.log (`Correct! your score is ${points} `);
 
-        game(range + 1);
-
+      game(range + 1);
+      break;
     } 
-    
-    if(guess != correctNumber){
-        return console.log(`Sorry, you lose. Your score is ${points}`);
+    else{
+      attemptsLeft -= 1;
+      if(!attemptsLeft) return console.log(`Sorry, you lose. Your score is ${points}`);
     }
-    
-
+  }
 }
 
 intro();
